@@ -129,3 +129,108 @@ class MyException extends Exception {
 字符 = 字节 + 编码
 字节 = 字符 + 解码 
 ```
+
+### 文件的创建
+
+```java
+try {
+    File file1 = new File("src/output/test.txt");
+    file1.createNewFile();
+} catch(IOException e) {
+    e.printStackTrace();
+}
+		
+try {
+    File file2 = new File("src/output/hello.txt");
+    file2.createNewFile();
+} catch(IOException e) {
+    e.printStackTrace();
+}
+```
+
+### 文件的常用操作
+
+```java
+// 创建
+File file = new File("~/test.txt");
+file.mkdir();
+// 删除
+file.delete();
+// 列出文件和目录
+import java.util.Arrays;
+File dir = new File("~/");
+File[] files = dir.listFiles();
+Arrays.sort(files);
+for (File c : files) {
+    System.out.println(c.getName())；
+}
+```
+
+### 文件查看器
+
+```java
+public class Task {
+	int n = 1;	
+	public void showDirStructure(File file)	{
+		System.out.println("+--" + file.getName());
+		File[] dir = file.listFiles();
+		Arrays.sort(dir);
+
+		for (File c : dir) {
+			if (c.isDirectory()) {  // isDirectory() 判断是否是文件夹
+				for (int i = 0; i < n * 2; i ++ ) System.out.print(" ");
+				n ++ ;
+				showDirStructure(c);
+				n -- ;
+			}
+			else {
+				for (int i = 0; i < n * 2; i ++ ) System.out.print(" ");
+				System.out.println("--" + c.getName());
+			}
+		}
+	}
+}
+```
+
+### 图片查看器
+
+```java
+public void showDirStructure(File file)	{
+    FileFilter filter=f-> {
+        if (f.isFile()) {
+            String filename = f.getName().toLowerCase();
+            if (filename.endsWith(".jpg") || filename.endsWith(".png") || filename.endsWith(".bmp") )
+                return true;
+        } else if (f.isDirectory())
+            return true;
+        return false;
+    };
+
+    int i = 1;
+    File[] files = file.listFiles();
+    Arrays.sort(files);
+    System.out.println("+--" + file.getName());
+    for (File f : files)
+        function(i, f, filter);
+}
+	
+public void function(int i, File f, FileFilter filter){
+    if (f.isDirectory()) {
+        File[] fs = f.listFiles(filter);
+        Arrays.sort(fs);
+        for (int j = 0; j < i * 2; j ++ ) 
+            System.out.print(" ");
+        System.out.println("+--" + f.getName());
+        i ++ ;
+        for (int w = 0; w < fs.length; w ++ )
+            function(i, fs[w], filter);
+    }
+    else {
+        for (int k = 0; k < i * 2 ; k ++ ) {
+            System.out.print(" ");      
+        }
+        System.out.println("--" + f.getName());  
+    }
+}
+```
+
