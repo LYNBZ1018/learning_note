@@ -952,25 +952,188 @@ OSPF有四种网络类型：Broadcast、NBMA、P2MP、P2P
 
 ## 12.ACL原理与配置
 
+### 12.1ACL技术概述
+
+* 需要实现流量过滤
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927182015456.png" alt="image-20220927182015456" style="zoom:67%;" />
+
+* **ACL是由一些列permit和deny语句组成的、有序规则的列表。**
+
+![image-20220927182046918](https://gitee.com/lynbz1018/image/raw/master/img/20220927182048.png)
 
 
 
+### 12.2ACL的基本概念及其工作原理
+
+**ACL的组成**
+
+<img src="https://gitee.com/lynbz1018/image/raw/master/img/20220927182804.png" alt="image-20220927182803805" style="zoom:67%;" />
+
+**匹配规则**
+
+![image-20220927182912529](https://gitee.com/lynbz1018/image/raw/master/img/20220927182913.png)
+
+**通配符**
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927183328429.png" alt="image-20220927183328429" style="zoom:67%;" />
+
+ACL中的通配符可以不连续
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927183436438.png" alt="image-20220927183436438" style="zoom:67%;" />
+
+#### ACL分类
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927183802873.png" alt="image-20220927183802873" style="zoom:67%;" />
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927183848212.png" alt="image-20220927183848212" style="zoom:67%;" />
+
+#### ACL匹配
+
+系统按照ACL**规则编号从小到大**的顺序进行报文匹配，规则编号越小越容易匹配。
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927184137365.png" alt="image-20220927184137365" style="zoom:67%;" />
+
+**匹配位置**
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927184524854.png" alt="image-20220927184524854" style="zoom:50%;" />
+
+
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927184909216.png" alt="image-20220927184909216" style="zoom:67%;" />
 
 
 
 ## 13.AAA原理与配置
 
+### 13.1AAA概述
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927185619801.png" alt="image-20220927185619801" style="zoom: 80%;" />
+
+AAA是Authentication（认证）、Authorization（授权）和Accounting（计费）的简称，是网络安全的一种管理机制，提供了认证、授权、计费三种安全功能。
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927194626502.png" alt="image-20220927194626502" style="zoom:67%;" />
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927195237495.png" alt="image-20220927195237495" style="zoom:80%;" />
+
+**认证**
 
 
 
+![image-20220927195803289](https://gitee.com/lynbz1018/image/raw/master/img/20220927195804.png)
 
 
 
+**授权**
 
+
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927200132061.png" alt="image-20220927200132061" style="zoom:67%;" />
+
+
+
+**计费**
+
+路由器不具备计费功能
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927200256934.png" alt="image-20220927200256934" style="zoom:67%;" />
+
+**RADIUS**
+
+![image-20220927200558159](https://gitee.com/lynbz1018/image/raw/master/img/20220927200559.png)
+
+**使用场景**
+
+![image-20220927200700735](https://gitee.com/lynbz1018/image/raw/master/img/20220927200701.png)
 
 ## 14.网络地址转换
 
+### 14.1NAT概述
 
+* 随着互联网用户的增多，IPv4的共有地址资源显得越发短缺
+* IPv4地址资源存在分配不均的问题，部分地区的IPv4可用公有地址严重短缺。
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927212237618.png" alt="image-20220927212237618" style="zoom:67%;" />
+
+
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927212931581.png" alt="image-20220927212931581" style="zoom:80%;" />
+
+
+
+### 14.2静态NAT
+
+* 静态NAT要增加新的映射需要**网络管理员手动添加**
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927224641319.png" alt="image-20220927224641319" style="zoom:67%;" />
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927224809237.png" alt="image-20220927224809237" style="zoom:80%;" />
+
+**配置**
+
+![image-20220927225122970](https://gitee.com/lynbz1018/image/raw/master/img/20220927225124.png)
+
+
+
+### 14.3动态NAT
+
+访问外网时，临时从地址池分配一个没有使用的地址
+
+![image-20220927230452252](https://gitee.com/lynbz1018/image/raw/master/img/20220927230453.png)
+
+
+
+![image-20220927231135565](https://gitee.com/lynbz1018/image/raw/master/img/20220927231136.png)
+
+**配置**
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927231215762.png" alt="image-20220927231215762" style="zoom:80%;" />
+
+**no-pat 不做端口转换**
+
+进行端口转换的是NAPT
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927231224070.png" alt="image-20220927231224070" style="zoom:80%;" />
+
+
+
+### 14.4NAPT、Easy-IP
+
+NAPT也会对端口进行转换，可以有效提高公网地址利用率
+
+<img src="https://gitee.com/lynbz1018/image/raw/master/img/20220927232510.png" alt="image-20220927232509389" style="zoom:80%;" />
+
+没有no-pat，进行端口转换
+
+![image-20220927232602799](https://gitee.com/lynbz1018/image/raw/master/img/20220927232603.png)
+
+#### Easy-IP
+
+适用于不具备固定公网IP地址的场景
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927233020570.png" alt="image-20220927233020570" style="zoom:67%;" />
+
+**配置**
+
+也需要配置acl进行过滤
+
+![image-20220927233157984](https://gitee.com/lynbz1018/image/raw/master/img/20220927233159.png)
+
+
+
+### 14.5NAT Serer
+
+布置在内网的服务器需要和外网连接需要使用NAT server
+
+实现了内网主机对外网的服务
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927233946909.png" alt="image-20220927233946909" style="zoom:80%;" />
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220927234041613.png" alt="image-20220927234041613" style="zoom:80%;" />
+
+
+
+![image-20220927234113667](https://gitee.com/lynbz1018/image/raw/master/img/20220927234114.png)
 
 
 
