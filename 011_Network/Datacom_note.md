@@ -546,7 +546,12 @@ Spanning Tree Protocol就是用于解决交换网络中二层环路问题。
 
 ### 7.2基本概念和工作原理	
 
+**BID**
 
+* BID越小越优，优先级相同，MAC地址越小越优，**最优的选举为根桥**
+* 优先级范围 0 ~ 65535，默认32768，可以修改但必须为**4096的倍数**
+
+![image-20220929095131715](https://gitee.com/lynbz1018/image/raw/master/img/20220929095133.png)
 
 ### 7.3RSTP对STP的改进
 
@@ -1139,11 +1144,111 @@ NAPT也会对端口进行转换，可以有效提高公网地址利用率
 
 ## 15.网络服务与应用
 
+### 15.1FTP
+
+#### FTP
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929170906972.png" alt="image-20220929170906972" style="zoom:67%;" />
+
+**主动模式**
+
+FTP有两个端口20和21
+
+![image-20220929171547937](https://gitee.com/lynbz1018/image/raw/master/img/20220929171549.png)
+
+**被动模式**
+
+![image-20220929172127698](https://gitee.com/lynbz1018/image/raw/master/img/20220929172128.png)
+
+#### TFTP
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929173620929.png" alt="image-20220929173620929" style="zoom:80%;" />
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929173706827.png" alt="image-20220929173706827" style="zoom:67%;" />
+
+
+
+### 15.2Telnet
+
+IP地址可达，可以连通TCP23号端口
+
+![image-20220929174506321](https://gitee.com/lynbz1018/image/raw/master/img/20220929174726.png)
+
+
+
+多个用户同时在VTY中进行配置，生效的是最后配置的那个
+
+![image-20220929174652653](https://gitee.com/lynbz1018/image/raw/master/img/20220929174653.png)
+
+### 15.3DHCP
+
+要配置IP、掩码、网关，复杂；如果用户多，工作量大；利用率低；灵活性差；
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929182437451.png" alt="image-20220929182437451" style="zoom:67%;" />
+
+#### DHCP优点
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929182728803.png" alt="image-20220929182728803" style="zoom:67%;" />
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929183146643.png" alt="image-20220929183146643" style="zoom:67%;" />
+
+
+
+![image-20220929183345814](https://gitee.com/lynbz1018/image/raw/master/img/20220929183347.png)
 
 
 
 
 
+### 15.4HTTP
+
+![image-20220929185716645](https://gitee.com/lynbz1018/image/raw/master/img/20220929185717.png)
+
+![image-20220929185953372](https://gitee.com/lynbz1018/image/raw/master/img/20220929185954.png)
+
+使用TCP80端口
+
+域名需要通过DNS转换为IP地址
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929190130293.png" alt="image-20220929190130293" style="zoom:67%;" />
+
+服务器根据url在本地找到文件后传输给客户端
+
+![image-20220929190230667](https://gitee.com/lynbz1018/image/raw/master/img/20220929190231.png)
+
+
+
+
+
+### 15.5DNS
+
+用UDP进行DNS请求和回应
+
+![image-20220929190704680](https://gitee.com/lynbz1018/image/raw/master/img/20220929190705.png)
+
+一般根域名不显示
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929190833356.png" alt="image-20220929190833356" style="zoom:67%;" />
+
+
+
+**DNS查询**
+
+![image-20220929190910655](C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929190910655.png)
+
+
+
+### 15.6NTP
+
+快速传输，使用UDP，端口123
+
+用于同步时钟
+
+![image-20220929191913115](https://gitee.com/lynbz1018/image/raw/master/img/20220929191914.png)
+
+![image-20220929192138827](https://gitee.com/lynbz1018/image/raw/master/img/20220929192140.png)
+
+![image-20220929192211871](https://gitee.com/lynbz1018/image/raw/master/img/20220929192213.png)
 
 
 
