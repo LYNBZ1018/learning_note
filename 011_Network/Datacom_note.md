@@ -1254,9 +1254,77 @@ IP地址可达，可以连通TCP23号端口
 
 ## 16.WLAN概念
 
+### 16.1WLAN概述
+
+WLAN指用无线信号代替有限局域网中的部分或全部传输介质所构成的网络。
+
+WiFi是WLAN的一个子集。使用的无线电波，802.11是一个协议族。
+
+WIFI是一个共享介质，是所有使用的终端加起来不超过最高的理论速度。
+
+![image-20220929205255277](https://gitee.com/lynbz1018/image/raw/master/img/20220929205256.png)
 
 
 
+![image-20220929210017698](https://gitee.com/lynbz1018/image/raw/master/img/20220929210018.png)
+
+
+
+
+
+### 16.2WLAN的基本概念
+
+**WLAN设备**
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929211500111.png" alt="image-20220929211500111" style="zoom:67%;" />
+
+![image-20220929211741571](https://gitee.com/lynbz1018/image/raw/master/img/20220929211742.png)
+
+
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929212049333.png" alt="image-20220929212049333" style="zoom:67%;" />
+
+#### 有线侧组网概念
+
+![image-20220929212643307](https://gitee.com/lynbz1018/image/raw/master/img/20220929212644.png)
+
+![image-20220929212755429](https://gitee.com/lynbz1018/image/raw/master/img/20220929212756.png)
+
+#### 无线侧组网
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929213444180.png" alt="image-20220929213444180" style="zoom:50%;" />
+
+<img src="https://gitee.com/lynbz1018/image/raw/master/img/20220929213656.png" alt="image-20220929213655544" style="zoom:67%;" />
+
+<img src="https://gitee.com/lynbz1018/image/raw/master/img/20220929215224.png" alt="image-20220929215223129" style="zoom:67%;" />
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929215704125.png" alt="image-20220929215704125" style="zoom:67%;" />
+
+虚拟AP，可以设置不同的SSID
+
+![image-20220929215837901](https://gitee.com/lynbz1018/image/raw/master/img/20220929215839.png)
+
+由不同的BSS，相同的SSID，组成的一个大的虚拟BSS
+
+![image-20220929220134399](https://gitee.com/lynbz1018/image/raw/master/img/20220929220135.png)
+
+
+
+### 16.3WLAN的工作原理
+
+![image-20220929230137513](https://gitee.com/lynbz1018/image/raw/master/img/20220929230138.png)
+
+
+
+### 16.5新一代WLAN解决方案
+
+<img src="https://gitee.com/lynbz1018/image/raw/master/img/20220929231256.png" alt="image-20220929231255559" style="zoom:67%;" />
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220929231347846.png" alt="image-20220929231347846" style="zoom:67%;" />
+
+![image-20220929231428800](https://gitee.com/lynbz1018/image/raw/master/img/20220929231430.png)
+
+![image-20220929231704948](https://gitee.com/lynbz1018/image/raw/master/img/20220929231706.png)
 
 
 
@@ -1264,7 +1332,105 @@ IP地址可达，可以连通TCP23号端口
 
 ## 17.广域网技术
 
+### 17.1早期广域网技术概述
 
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220930000146136.png" alt="image-20220930000146136" style="zoom:67%;" />
+
+早期WAN和LAN的区别在与数据链路层和物理层的差异
+
+![image-20220930000457168](https://gitee.com/lynbz1018/image/raw/master/img/20220930000458.png)
+
+**广域网络设备**
+
+![image-20220930000843699](https://gitee.com/lynbz1018/image/raw/master/img/20220930000844.png)
+
+![image-20220930001010676](https://gitee.com/lynbz1018/image/raw/master/img/20220930001011.png)
+
+### 17.2PPP协议原理与配置
+
+#### PPP协议原理
+
+![image-20220930095129492](https://gitee.com/lynbz1018/image/raw/master/img/20220930095131.png)
+
+PPP**建立过程**
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220930095324770.png" alt="image-20220930095324770" style="zoom:67%;" />
+
+PPP**链路接口状态机**
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220930095431135.png" alt="image-20220930095431135" style="zoom:67%;" />
+
+**LCP协议报文**
+
+![image-20220930095826554](https://gitee.com/lynbz1018/image/raw/master/img/20220930095827.png)
+
+**LCP协商过程**
+
+<img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220930204849525.png" alt="image-20220930204849525" style="zoom:67%;" />
+
+
+
+![](https://gitee.com/lynbz1018/image/raw/master/img/20220930205027.png)
+
+**ppp认证模式**
+
+![image-20220930205820839](https://gitee.com/lynbz1018/image/raw/master/img/20220930205822.png)
+
+![image-20220930210650986](https://gitee.com/lynbz1018/image/raw/master/img/20220930210652.png)
+
+**NCP协商**
+
+![image-20220930211018345](https://gitee.com/lynbz1018/image/raw/master/img/20220930211019.png)
+
+
+
+![image-20220930211111422](https://gitee.com/lynbz1018/image/raw/master/img/20220930211112.png)
+
+
+
+
+
+### 17.3PPPoE原理与配置
+
+既有以太网的灵活组网，又有PPP协议的认证、计费功能
+
+![image-20220930212120458](https://gitee.com/lynbz1018/image/raw/master/img/20220930212121.png)
+
+![image-20220930212417150](https://gitee.com/lynbz1018/image/raw/master/img/20220930212418.png)
+
+#### PPPoE回话建立
+
+![image-20220930212736754](https://gitee.com/lynbz1018/image/raw/master/img/20220930212737.png)
+
+![image-20220930212926017](https://gitee.com/lynbz1018/image/raw/master/img/20220930212927.png)
+
+![image-20220930213024677](https://gitee.com/lynbz1018/image/raw/master/img/20220930213025.png)
+
+![image-20220930213058807](https://gitee.com/lynbz1018/image/raw/master/img/20220930213100.png)
+
+![image-20220930213135200](https://gitee.com/lynbz1018/image/raw/master/img/20220930213136.png)
+
+### 17.4广域网技术的发展
+
+![image-20220930224241818](https://gitee.com/lynbz1018/image/raw/master/img/20220930224243.png)
+
+#### MPLS标签转发
+
+![image-20220930224540905](https://gitee.com/lynbz1018/image/raw/master/img/20220930224542.png)
+
+![image-20220930224936764](https://gitee.com/lynbz1018/image/raw/master/img/20220930224938.png)
+
+#### SR segment routing
+
+![image-20220930225220619](https://gitee.com/lynbz1018/image/raw/master/img/20220930225221.png)
+
+![image-20220930225351371](https://gitee.com/lynbz1018/image/raw/master/img/20220930225353.png)
+
+![image-20220930225547540](https://gitee.com/lynbz1018/image/raw/master/img/20220930225548.png)
+
+![image-20220930225727812](https://gitee.com/lynbz1018/image/raw/master/img/20220930225729.png)
+
+![image-20220930225737057](https://gitee.com/lynbz1018/image/raw/master/img/20220930225738.png)
 
 
 
