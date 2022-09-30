@@ -1432,15 +1432,57 @@ PPP**链路接口状态机**
 
 ![image-20220930225737057](https://gitee.com/lynbz1018/image/raw/master/img/20220930225738.png)
 
-
-
-
-
 ## 18.网络管理与运维
 
+### 18.1网络管理与运维基本概念
+
+![image-20220930232654811](https://gitee.com/lynbz1018/image/raw/master/img/20220930232656.png)
+
+![image-20220930232827460](https://gitee.com/lynbz1018/image/raw/master/img/20220930232828.png)
+
+![image-20220930233200475](https://gitee.com/lynbz1018/image/raw/master/img/20220930233201.png)
 
 
 
+
+
+
+
+### 18.2传统网络管理
+
+#### SNMP原理
+
+![image-20220930233523390](https://gitee.com/lynbz1018/image/raw/master/img/20220930233524.png)
+
+网络管理员通过NMS对不同的网络设备进行统一管理，NMS通过SNMP报文进行交互
+
+![image-20220930233751952](https://gitee.com/lynbz1018/image/raw/master/img/20220930233753.png)
+
+![image-20220930233917121](https://gitee.com/lynbz1018/image/raw/master/img/20220930233918.png)
+
+![image-20220930234109937](https://gitee.com/lynbz1018/image/raw/master/img/20220930234111.png)
+
+
+
+![image-20220930234248981](https://gitee.com/lynbz1018/image/raw/master/img/20220930234250.png)
+
+![image-20220930234435759](https://gitee.com/lynbz1018/image/raw/master/img/20220930234436.png)
+
+
+
+![image-20220930234601016](https://gitee.com/lynbz1018/image/raw/master/img/20220930234602.png)
+
+
+
+### 18.3基于华为iMaster NCE的网络管理
+
+![image-20220930234857657](https://gitee.com/lynbz1018/image/raw/master/img/20220930234858.png)
+
+![image-20220930234947399](https://gitee.com/lynbz1018/image/raw/master/img/20220930234948.png)
+
+
+
+![image-20220930235044337](https://gitee.com/lynbz1018/image/raw/master/img/20220930235045.png)
 
 
 
