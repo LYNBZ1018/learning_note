@@ -1488,17 +1488,83 @@ PPP**链路接口状态机**
 
 ## 19.IPv6技术
 
+### 19.1IPv6概述
+
+![image-20221001231624101](https://gitee.com/lynbz1018/image/raw/master/img/20221001231625.png)
+
+#### **IPv6的优势**
+
+![image-20221001231734591](https://gitee.com/lynbz1018/image/raw/master/img/20221001231735.png)
+
+#### IPv6的包头
+
+![image-20221001232445829](https://gitee.com/lynbz1018/image/raw/master/img/20221001232447.png)
+
+![image-20221001232538184](https://gitee.com/lynbz1018/image/raw/master/img/20221001232539.png)
+
+![image-20221001232642727](https://gitee.com/lynbz1018/image/raw/master/img/20221001232643.png)
+
+#### IPv6地址
+
+![image-20221001232915894](https://gitee.com/lynbz1018/image/raw/master/img/20221001232917.png)
+
+![image-20221001233201378](https://gitee.com/lynbz1018/image/raw/master/img/20221001233202.png)
+
+### 19.2IPv6分类
+
+![image-20221002000110676](https://gitee.com/lynbz1018/image/raw/master/img/20221002000112.png)
+
+![image-20221002000541104](https://gitee.com/lynbz1018/image/raw/master/img/20221002000542.png)
+
+![image-20221002001531713](https://gitee.com/lynbz1018/image/raw/master/img/20221002001532.png)
+
+#### IPv6常见单播
+
+##### 全球单播地址
+
+![image-20221002001932449](https://gitee.com/lynbz1018/image/raw/master/img/20221002001933.png)
+
+##### 本地唯一地址
+
+![image-20221002002051131](https://gitee.com/lynbz1018/image/raw/master/img/20221002002052.png)
 
 
 
+##### 链路地址
 
+![image-20221002002245271](https://gitee.com/lynbz1018/image/raw/master/img/20221002002246.png)
 
+#### 组播地址
 
+![image-20221002002500102](https://gitee.com/lynbz1018/image/raw/master/img/20221002002501.png)
 
+![image-20221002002710096](https://gitee.com/lynbz1018/image/raw/master/img/20221002002711.png)
+
+#### 任播地址
+
+当一组服务器提供相同的服务时，希望主机获取到最近的服务器提供服务，可以让这一组服务器提供一个任播地址
+
+![image-20221002002911131](https://gitee.com/lynbz1018/image/raw/master/img/20221002002912.png)
+
+![image-20221002003738028](https://gitee.com/lynbz1018/image/raw/master/img/20221002003739.png)
 
 ## 20.SDN与NFV概念
 
+### 20.1SDN概述
 
+
+
+
+
+
+
+
+
+
+
+
+
+### 20.2NFV概述
 
 
 
