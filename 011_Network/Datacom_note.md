@@ -1552,19 +1552,63 @@ PPP**链路接口状态机**
 
 ### 20.1SDN概述
 
+#### 传统网络的缺点
+
+![image-20221002105219000](https://gitee.com/lynbz1018/image/raw/master/img/20221002105220.png)
+
+![image-20221002105556597](https://gitee.com/lynbz1018/image/raw/master/img/20221002105557.png)
+
+![image-20221002105618482](https://gitee.com/lynbz1018/image/raw/master/img/20221002105619.png)
 
 
 
+#### SDN定义
+
+![image-20221002111630361](https://gitee.com/lynbz1018/image/raw/master/img/20221002111631.png)
+
+![image-20221002111835575](https://gitee.com/lynbz1018/image/raw/master/img/20221002111836.png)
 
 
 
+![image-20221002111957464](https://gitee.com/lynbz1018/image/raw/master/img/20221002111958.png)
+
+![image-20221002112158784](https://gitee.com/lynbz1018/image/raw/master/img/20221002112159.png)
 
 
 
+![image-20221002112338097](https://gitee.com/lynbz1018/image/raw/master/img/20221002112339.png)
+
+![image-20221002112425139](https://gitee.com/lynbz1018/image/raw/master/img/20221002112426.png)
+
+
+
+#### iMaster NCE解决方案
+
+![image-20221002114645062](https://gitee.com/lynbz1018/image/raw/master/img/20221002114646.png)
+
+![image-20221002114803704](https://gitee.com/lynbz1018/image/raw/master/img/20221002114804.png)
 
 
 
 ### 20.2NFV概述
+
+![image-20221002115108852](https://gitee.com/lynbz1018/image/raw/master/img/20221002115110.png)
+
+![image-20221002115238758](https://gitee.com/lynbz1018/image/raw/master/img/20221002115239.png)
+
+![image-20221002115410218](https://gitee.com/lynbz1018/image/raw/master/img/20221002115411.png)
+
+![image-20221002115519832](https://gitee.com/lynbz1018/image/raw/master/img/20221002115521.png)
+
+![image-20221002115911225](https://gitee.com/lynbz1018/image/raw/master/img/20221002115912.png)
+
+![image-20221002115957137](https://gitee.com/lynbz1018/image/raw/master/img/20221002115958.png)
+
+![image-20221002115949824](https://gitee.com/lynbz1018/image/raw/master/img/20221002115951.png)
+
+
+
+![image-20221002120116481](https://gitee.com/lynbz1018/image/raw/master/img/20221002120117.png)
 
 
 
