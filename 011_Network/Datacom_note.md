@@ -1612,6 +1612,24 @@ PPP**链路接口状态机**
 
 
 
-
-
 ## 21.网络编程与自动化
+
+![image-20221002121037592](https://gitee.com/lynbz1018/image/raw/master/img/20221002121038.png)![image-20221002121058631](https://gitee.com/lynbz1018/image/raw/master/img/20221002121059.png)
+
+![image-20221002121241331](https://gitee.com/lynbz1018/image/raw/master/img/20221002121242.png)
+
+## 22.园区网络基本概念
+
+用802.3 802.11构建一个局域网 -> 园区网
+
+![image-20221002121506453](https://gitee.com/lynbz1018/image/raw/master/img/20221002121507.png)
+
+![image-20221002122002652](https://gitee.com/lynbz1018/image/raw/master/img/20221002122003.png)
+
+![image-20221002122059619](https://gitee.com/lynbz1018/image/raw/master/img/20221002122100.png)
+
+![image-20221002122127076](https://gitee.com/lynbz1018/image/raw/master/img/20221002122128.png)
+
+![image-20221002122205010](https://gitee.com/lynbz1018/image/raw/master/img/20221002122206.png)
+
+![image-20221002122233877](https://gitee.com/lynbz1018/image/raw/master/img/20221002122235.png)
