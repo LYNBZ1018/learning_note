@@ -546,16 +546,93 @@ Spanning Tree Protocol就是用于解决交换网络中二层环路问题。
 
 ### 7.2基本概念和工作原理	
 
+#### 生成树基本概念
+
 **BID**
 
 * BID越小越优，优先级相同，MAC地址越小越优，**最优的选举为根桥**
 * 优先级范围 0 ~ 65535，默认32768，可以修改但必须为**4096的倍数**
+* 802.1D 规定BID由16位桥优先级和48位桥MAC地址构成
 
 ![image-20220929095131715](https://gitee.com/lynbz1018/image/raw/master/img/20220929095133.png)
 
+![image-20221002193626146](https://gitee.com/lynbz1018/image/raw/master/img/20221002193627.png)
+
+Cost的默认值与接口速率、Cost计算方法有关
+
+![image-20221002193730050](https://gitee.com/lynbz1018/image/raw/master/img/20221002193731.png)
+
+根桥的RPC为0
+
+![image-20221002193944629](https://gitee.com/lynbz1018/image/raw/master/img/20221002193945.png)
+
+##### 端口优先级
+
+![image-20221002194127059](https://gitee.com/lynbz1018/image/raw/master/img/20221002194128.png)
+
+##### BPDU
+
+![image-20221002194459235](https://gitee.com/lynbz1018/image/raw/master/img/20221002194500.png)
+
+![image-20221002195115784](https://gitee.com/lynbz1018/image/raw/master/img/20221002195116.png)
+
+<img src="https://gitee.com/lynbz1018/image/raw/master/img/20221002195125.png" alt="image-20221002195124440" style="zoom: 50%;" />
+
+
+
+![image-20221002195159444](https://gitee.com/lynbz1018/image/raw/master/img/20221002195200.png)
+
+#### 生成树工作过程
+
+1. 选举根桥
+
+![image-20221002195952100](https://gitee.com/lynbz1018/image/raw/master/img/20221002195953.png)
+
+2. 选举根端口
+
+![image-20221002200241328](https://gitee.com/lynbz1018/image/raw/master/img/20221002200242.png)
+
+3. 选举指定端口
+
+![image-20221002200503529](https://gitee.com/lynbz1018/image/raw/master/img/20221002200504.png)
+
+
+
+4. 阻塞预备端口
+
+![image-20221002200616335](https://gitee.com/lynbz1018/image/raw/master/img/20221002200617.png)
+
+![image-20221002200643679](https://gitee.com/lynbz1018/image/raw/master/img/20221002200644.png)
+
+![image-20221002200736218](https://gitee.com/lynbz1018/image/raw/master/img/20221002200737.png)
+
+#### 拓扑变化过程
+
+![image-20221002201024923](https://gitee.com/lynbz1018/image/raw/master/img/20221002201026.png)
+
+![image-20221002201314233](https://gitee.com/lynbz1018/image/raw/master/img/20221002201315.png)
+
+![image-20221002201432120](https://gitee.com/lynbz1018/image/raw/master/img/20221002201433.png)
+
+![image-20221002201659960](https://gitee.com/lynbz1018/image/raw/master/img/20221002201701.png)
+
+![image-20221002201806592](https://gitee.com/lynbz1018/image/raw/master/img/20221002201807.png)
+
+
+
 ### 7.3RSTP对STP的改进
 
+![image-20221002202042317](https://gitee.com/lynbz1018/image/raw/master/img/20221002202043.png)
 
+![image-20221002202112384](https://gitee.com/lynbz1018/image/raw/master/img/20221002202113.png)
+
+
+
+![image-20221002202149478](https://gitee.com/lynbz1018/image/raw/master/img/20221002202150.png)
+
+![image-20221002202249726](https://gitee.com/lynbz1018/image/raw/master/img/20221002202250.png)
+
+![image-20221002202306444](https://gitee.com/lynbz1018/image/raw/master/img/20221002202307.png)
 
 ## 8.以太网链路聚合与交换机堆叠、集群
 
