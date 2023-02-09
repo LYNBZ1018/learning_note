@@ -633,16 +633,17 @@ DU: RLC、MAC、PHY
 5. 5G最小的带宽是5MHz。
 6. 5G下行峰值速率相比LTE提升了100倍。
 7. 5G新提出的多址接入技术是SCMA，叫做稀疏的码分多址技术。
-8. R15版本中确定的是Numerology和上下行解耦。
+8. R15版本中确定的是**Numerology**和**上下行解耦**。
 9. 无线侧CU可以实现云化，DU/BBU/AAU不能实现云化。
 10. <img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221011223754318.png" alt="image-20221011223754318" style="zoom: 67%;" />
-
 11. Massive MIMO增加的是小区的吞吐率，对单用户的速率没有影响。
 12. NSA Option3系列，分成option3、option3A、option3X，架构是eNB+EPC。
 13. F1是CU和DU之间的接口，CU和AAU之间不直接连接。
 14. 频段越高，上下行覆盖差异越明显，导致**上行覆盖受限**。
 15. 子载波间隔越小对频偏越敏感。
 16. R15未确定使用SCMA多址接入
+17. Massive MINO使用的增益包括：阵列增益、赋型增益、复用增益、空分复用、分集增益
+18. 5G空口协议相对4G增加了SDAP层，确保QoS功能
 
 
 
@@ -682,6 +683,8 @@ DU: RLC、MAC、PHY
 
 
 
+在哪一个距离使用哪一个频段用于上行传输由**基站**决定
+
 5. 超级上行，使用Sub3G 能使上行全时隙发送数据
 
 <img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221012222026298.png" alt="image-20221012222026298" style="zoom:50%;" />
@@ -692,7 +695,7 @@ DU: RLC、MAC、PHY
 
 <img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221012222333202.png" alt="image-20221012222333202" style="zoom:50%;" />
 
-
+ 
 
 ## 3.E2E时延和可靠性
 
@@ -782,7 +785,13 @@ DU: RLC、MAC、PHY
 
 
 
+## 错题
 
+1. 起步极端Cloud VR时延要求**20ms**， 理想阶段控制在**8ms**
+2. Verizon在2018年10月1日推出的5G商用**FWA** 固定无线接入，就是把无线信号转换成wifi信号，实现家庭网络的覆盖。
+3. **运动控制、C2C机器间控制、移动面板、移动机器人**属于uRLLC业务场景，大规模连接为mMTC业务场景，**工业AR及监控**是eMBB业务场景。
+4. Cloud VR的时延主要来自**云端梳理时间**、**网络端到端传输时延**及**终端处理时延**。
+5. 3G/4G网络无法支撑无人机，主要是无法很好的**实现对空的覆盖**，5G使用Massive MIMO后**增加了垂直面的覆盖**。
 
 
 
@@ -916,11 +925,13 @@ AI BigData BlockChain CloudComputing
 
 无监督、半监督的学习
 
+四要素：数据、算法、算力、场景
+
 <img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221013211124929.png" alt="image-20221013211124929" style="zoom:50%;" />
 
 
 
-数据量决定着人工智能的上限，算法智能上AI无限逼近上限
+数据量决定着人工智能的上限，算法只能上AI无限逼近上限
 
 <img src="C:%5CUsers%5Clyn95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221013212111250.png" alt="image-20221013212111250" style="zoom:67%;" />
 
@@ -1102,5 +1113,6 @@ Quality of Service
 
 ![image-20221016121446727](https://gitee.com/lynbz1018/image/raw/master/img/20221016121448.png)
 
+![image-20221016130442112](https://gitee.com/lynbz1018/image/raw/master/img/20221016130443.png)
 
-
+![image-20221016131637764](https://gitee.com/lynbz1018/image/raw/master/img/20221016131639.png)
