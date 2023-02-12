@@ -871,17 +871,194 @@ transactionRoot 和 receiptsRoot 仅表示当前区块的两棵树,  和前边�
 
 ### 智能合约
 
+以太坊和比特币相比最大的创新就是以太坊支持**智能合约**
+
+智能合约:  **运行在区块链上的程序**.  
+
+* 智能合约要保证在区块链网络中的每一个节点运行的结果完全相同  这样才可以使 <u>任意一个节点</u> 都可以验证  <u>挖矿产出节点</u> 生成的区块里 智能合约执行的结果对不对.
+
+以太坊提供了一个**EVM**(以太坊虚拟机)用于执行智能合约的字节码.
+
+为了消除智能合约的不确定性,  **智能合约有很多限制,**  如不支持浮点计算(浮点表示方法不同, 不同的CPU运算符的浮点结果也不相同)
+
+* 以太坊提供了**Solidity**高级语言编写智能合约,  编译为智能合约字节码后,  可以在EVM中执行.
+
+* 智能合约的字节码在部署在区块链时,  会根据部署着的地址和该地址的nonce分配一个**合约地址**
+  * 合约地址**没有私钥**,  没有人可以直接调用改地址的合约数据
+  * 调用合约唯一的方法是:  **调用合约的公共函数**
+* 合约不能主动执行,  智能被外部账户发起调用
+  * 如果需要一个人合约定期执行,  需要线下服务器定期发起合约调用
+  * 合约在执行时可以调用其他合约的公共函数
+* 合约作为地址,  既可以接受Ether,  也可以发送Ether.
+  * 合约也可以存储数据,  数据存储在地址关联的存储上,  这就使得**合约具有了状态**
+
+`合约在运行过程可以调用其他已经部署的合约, 要知道合约的地址和函数签名`
+
+`一个合约可以调用另一个借贷合约的借款方法, 在调用交易方法, 最后调用还款方法, 快速实现一个带宽交易`
+
+`多个合约的嵌套调用, 可能会使代码因漏洞被黑客攻击的风险增大`
+
 
 
 
 
 #### 编写合约
 
+以太坊的智能合约就是运行在EVM虚拟机上的字节码.
 
+用高级语言**Solidity**(类JavaScript语法的高级语言)编写后通过编译器编译为字节码.
+
+```javascript
+// SPDX-License-Identifier: GPL-3.0   ** 版权声明
+
+pragma solidity =0.8.7;  //  ** 声明编译器版本
+// pragma solidity >=0.8.0 <0.9.0;  //  ** 制定版本范围 0.8.x
+
+contract Vote {  //  ** 由关键字 'contract' 声明一个合约
+// 一个solidity文件可以包含多个合约 最好一个文件一个合约
+// 文件名要和合约名保持一致
+
+    // 合约可以定义事件, 触发事件必须在合约 写函数 中通过 emit 关键字实现
+    // 事件可以用于通知外部感兴趣的第三方, 他么可以在区块链上监听产生的事件, 从而确定合约某些状态发生了改变
+    event Voted(address indexed voter, uint8 proposal);
+
+    mapping(address => bool) public voted;  // 记录已投票的地址
+
+    uint256 public endTime;  // 记录终止时间
+	
+    // 支持整型(uint256 uint128 uint8) byte32 映射类型(相当于map) 布尔型(false true) 特殊的address类型(表示一个以太坊地址)
+    // 为了保证每一个节点运行智能合约的结果完全相同 不支持浮点类型
+    // 所有的类型默认初始化为 0 或 false 或 空
+    uint256 public proposalA;  // 记录每个人得到的票数
+    uint256 public proposalB;
+    uint256 public proposalC;
+	
+    // 如果某个成员变量要指定初始值, 需要在构造函数中复制
+    constructor(uint256 _endTime) {
+        endTime = _endTime;  // 设定成员变量为指定参数值
+    }
+	
+    // 没有view修饰的函数是写入函数, 会改变成员变量, 即改变了合约状态
+    function vote(uint8 _proposal) public {
+        require(block.timestamp < endTime, "Vote expired.");
+        require(_proposal >= 1 && _proposal <= 3, "Invalid proposal.");
+        require(!voted[msg.sender], "Cannot vote again.");
+        voted[msg.sender] = true;
+        if (_proposal == 1) {
+            proposalA ++;
+        }
+        else if (_proposal == 2) {
+            proposalB ++;
+        }
+        else if (_proposal == 3) {
+            proposalC ++;
+        }
+        emit Voted(msg.sender, _proposal);  // 调用vote()写方法时, 会触发Voted事件
+    }
+	
+    // 用view修饰的函数是只读函数, 不会修改成员变量, 即不会修改合约的状态
+    function votes() public view returns (uint256) {
+        return proposalA + proposalB + proposalC;
+    }
+}
+```
+
+**合约要素**
+
+* 版权声明
+* 声明编译器版本
+* contract关键字声明合约
+* 包含若干成员变量
+* 在构造函数中对成员变量指定初始化
+* 编写只读方法
+* 编写写入方法
+* 可以声明Event并在写入方法中触发
+
+函数被`public`修饰, 该函数可以被外部调用, 被`private`修饰, 该函数只能被`public`函数在内部调用
+
+
+
+**合约执行流程**
+
+合约编写完并成功编译后,就可以部署到以太坊上,合约部署后自动获得一个地址, 通过地址即可访问合约.
+
+合约相当于一个类, 部署一次相当于一个实例化, 如果部署两次, 将得到两个不同的地址, 两个部署后的合约的成员变量也是相互独立的.
+
+* 合约部署时构造函数就会立刻执行一次, 且仅执行一次. 
+  * 合约部署后就无法调用构造函数
+
+* 任何外部账户都可以发起对合约的调用
+  * 如果调用**只读方法**, 因为不改变合约状态, 任何时刻可以调用, 不需要签名,也不消耗Gas
+  * 如果调用**写入方法**, 需要签名提交一个交易, 且消耗Gas
+* 一个交易中只能调用一个合约的一个写入方法
+  * 以太坊交易中写入是严格串行的
+
+**验证**
+
+因为任何外部账户都可以调用合约的函数, 多以任何验证工作都是在函数内部自行完成的
+
+```javascript
+// require() 可以断言一个判断 如果断言失败 将抛出错误并中断执行
+//参数检查 参数必须为1 2 3
+require(_proposal >= 1 && _proposal <= 3, "Invalid proposal.");
+
+// 条件检查 时间必须小于设定的结束时间
+require(block.timestamp < endTime, "Vote expired.");
+
+// 调用方检查 不能重复调用
+require(!voted[msg.sender], "Cannot vote again.");
+```
+
+
+
+如果中途失败, 则合约的状态保持不变, 失败前改变的成员变量也不会发生修改
+
+```javascript
+function increment() {
+    // 假设a,b均为成员变量:
+    a++;
+    emit AChanged(a);
+    // 如果下面的验证失败，a不会被更新，也没有AChanged事件发生:
+    require(b < 10, 'b >= 10');
+    b++;
+}
+```
+
+合约执行失败后, 合约的状态不发生变化, **仅仅是调用方白白消耗了Gas**
 
 
 
 #### 部署合约
+
+**部署合约**也是一个交易, 需要一个**外部账户**, 消费一定的Gas
+
+MetaMask钱包是一个基于浏览器插件的钱包, 使用时通过Dapp网站的JavaScript可以发起交易, 用户通过MetaMask确认后就可以将交易发送至链上.
+
+MetaMask插件: [安装地址](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn/related)
+
+MetaMask可以切换不同的链, 以太坊主链 Ropsten测试网 Rinkeby测试网等
+
+在开发阶段可以使用Ropsten测试网
+
+* 以太坊官方提供了一个在线IDE, 可以用于编写 编译 部署以太坊合约 [Remix](http://remix.ethereum.org/)
+
+
+
+1. 在contracts文件夹中编写一个合约
+
+![image-20230212112945154](https://gitee.com/lynbz1018/image/raw/master/img/20230212113210.png)
+
+
+
+2. 进行编译
+
+![image-20230212113026116](https://gitee.com/lynbz1018/image/raw/master/img/20230212113027.png)
+
+
+
+3. 进行部署
+
+![image-20230212113219252](https://gitee.com/lynbz1018/image/raw/master/img/20230212113220.png)
 
 
 
@@ -889,15 +1066,66 @@ transactionRoot 和 receiptsRoot 仅表示当前区块的两棵树,  和前边�
 
 #### 调用合约
 
+部署合约的合约地址`0x45bcada03c3b74d33e4452b513e45ca8a7f7bb89`
+
+<img src="https://gitee.com/lynbz1018/image/raw/master/img/20230212120002.png" alt="image-20230212120001495" style="zoom:80%;" />
 
 
 
+在[Etherscan](https://goerli.etherscan.io/) 输入合约地址搜索查看
+
+通过'Verify and Publish' 将源码传到Etherscan并验证
+
+![image-20230212120134785](https://gitee.com/lynbz1018/image/raw/master/img/20230212120135.png)
+
+
+
+只读函数不需要耗费Gas, public字段会自动对应一个只读的函数
+
+![image-20230212120330273](https://gitee.com/lynbz1018/image/raw/master/img/20230212120331.png)
+
+
+
+写入函数 会改变合约状态 会消耗Gas
+
+![image-20230212120410288](https://gitee.com/lynbz1018/image/raw/master/img/20230212120411.png)
+
+
+
+调用了写入函数, 同时也触发了里面的时间事件
+
+<img src="https://gitee.com/lynbz1018/image/raw/master/img/20230212120453.png" alt="image-20230212120452013" style="zoom:80%;" />
 
 
 
 #### 编写Dapp
 
+可以在Etherscan中调用读取函数和写入函数, 这对于普通用户过于繁琐 和 不方便
 
+可以编写一个Dapp, 在网页通过按钮可以调用合约.
+
+<img src="https://gitee.com/lynbz1018/image/raw/master/img/20230212121118.png" alt="image-20230212121117786" style="zoom:80%;" />
+
+1. 页面的JavaScript无法直接访问以太坊网络的P2P节点, 只能通过钱包间接访问
+2. 钱包之所以能访问以太坊网络节点, 是因为他内部部署了某些公共节点的域名
+3. 所以一个浏览器用户没有安装MetaMask钱包, 则无法通过钱包读取合约和写入
+
+
+
+Dapp部署一个服务器后, 由服务器端连接P2P网络节点并读取合约, 然后以JASON API的形式给前端提供相关数据.
+
+<img src="https://gitee.com/lynbz1018/image/raw/master/img/20230212122642.png" alt="image-20230212122641486" style="zoom:80%;" />
+
+1. 后端服务只读取合约, 不存取任何私钥, 因此无法写入合约, 保证了安全性
+2. 后端服务器读取合约, 可以选择公共的服务节点
+3. 后端服务器应该通过合约产生的日志(写入合约运行时出发的event)监听合约的变化. 监听日志需要通过P2P节点创建Filter并获取Filter返回的日志
+4. 后端服务器将从日志获取的数据做好聚合 缓存以便前端页面能快速展示相关的数据.
+
+
+
+一个好的Dapp既要考虑关键业务逻辑 写入合约, 又要考虑日志输出有足够的信息让后端服务器聚合数据.
+
+需要前端 后端 合约三方开发紧密配合.
 
 
 
